@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفسير سورة الإخلاص</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['"IBM Plex Sans Arabic"', 'sans-serif'],
+                    quran: ['"Amiri"', 'serif'],
+                },
+                colors: {
+                    apple: {
+                        light: '#F5F3EF',
+                        dark: '#111827'
+                    },
+                    quran: {
+                        bg: '#F8F6F1',
+                        text: '#31473A',
+                        border: '#D6CFC2'
+                    },
+                    lang: {
+                        bg: '#F4EFE7',
+                        accent: '#8B6F47'
+                    },
+                    tafsir: {
+                        bg: '#F3F4F6',
+                        accent: '#6B7280'
+                    },
+                    reflect: {
+                        bg: '#1F2937',
+                        text: '#F9FAFB',
+                        gold: '#C6A96B'
+                    },
+                    hadith: {
+                        bg: '#F5F7F4',
+                        accent: '#4B6B4E'
+                    },
+                    aqeedah: {
+                        bg: '#EEF4F1',
+                        accent: '#2F5D50'
+                    },
+                    benefit: {
+                        bg: '#F7F3EA',
+                        accent: '#A17635'
+                    },
+                    grammar: {
+                        bg: '#F6F1E8',
+                        accent: '#7C5E36'
+                    }
+                },
+                boxShadow: {
+                    'apple': '0 8px 32px -8px rgba(0, 0, 0, 0.04), 0 4px 16px -4px rgba(0, 0, 0, 0.02)',
+                    'apple-hover': '0 20px 48px -12px rgba(0, 0, 0, 0.08), 0 12px 24px -8px rgba(0, 0, 0, 0.04)',
+                    'apple-dark': '0 8px 32px -8px rgba(0, 0, 0, 0.3)',
+                    'apple-dark-hover': '0 20px 48px -12px rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    }
+    </script>
+    <style>
+        :root { color-scheme: light; }
+        html.dark { color-scheme: dark; }
+        body { font-size: var(--reader-size, 18px); }
+        .reading-card { transition: transform 320ms ease, box-shadow 320ms ease, border-color 320ms ease; }
+        .reading-card:hover { transform: translateY(-0.25rem); }
+        .ambient-field {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: -1;
+            background:
+                radial-gradient(circle at 10% 15%, rgba(198, 169, 107, 0.20), transparent 34rem),
+                radial-gradient(circle at 88% 8%, rgba(75, 107, 78, 0.15), transparent 32rem),
+                radial-gradient(circle at 50% 100%, rgba(49, 71, 58, 0.12), transparent 38rem);
+            filter: blur(24px);
+        }
+        .dark .ambient-field {
+            background:
+                radial-gradient(circle at 12% 12%, rgba(198, 169, 107, 0.13), transparent 34rem),
+                radial-gradient(circle at 88% 10%, rgba(47, 93, 80, 0.20), transparent 32rem),
+                radial-gradient(circle at 55% 100%, rgba(99, 102, 120, 0.16), transparent 40rem);
+        }
+        .quran-line { line-height: 2.35; }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] .chevron { transform: rotate(180deg); }
+        .prose-ar p { line-height: 2.05; }
+        .prose-ar li { line-height: 2; }
+        @media print {
+            nav, .control-panel { display: none !important; }
+            body { background: white !important; }
+            .reading-card { box-shadow: none !important; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body class="font-sans bg-apple-light text-slate-900 antialiased dark:bg-apple-dark dark:text-slate-100">
+    <div class="ambient-field" aria-hidden="true"></div>
+
+    <nav class="sticky top-0 z-50 border-b border-white/50 bg-white/70 backdrop-blur-2xl dark:border-white/10 dark:bg-slate-950/60">
+        <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-4">
+            <a href="#top" class="flex flex-col">
+                <span class="text-sm font-semibold text-slate-950 dark:text-white">تفسير سورة الإخلاص</span>
+                <span class="text-xs text-slate-500 dark:text-slate-400">الشيخ سليمان العيوني</span>
+            </a>
+            <div class="hidden items-center gap-5 text-sm font-medium text-slate-600 dark:text-slate-300 md:flex">
+                <a class="hover:text-slate-950 dark:hover:text-white" href="#intro">المقدمة</a>
+                <a class="hover:text-slate-950 dark:hover:text-white" href="#tafsir">التفسير</a>
+                <a class="hover:text-slate-950 dark:hover:text-white" href="#features">الخصائص</a>
+                <a class="hover:text-slate-950 dark:hover:text-white" href="#summary">الخلاصة</a>
+            </div>
+            <div class="control-panel flex items-center gap-2">
+                <button id="toggleDetails" class="rounded-full border border-slate-200 bg-white/80 px-3 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:bg-white dark:border-white/10 dark:bg-white/10 dark:text-slate-200" type="button">التفاصيل</button>
+                <button id="fontMinus" class="grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white/80 text-sm font-bold shadow-sm transition hover:bg-white dark:border-white/10 dark:bg-white/10" type="button" aria-label="تصغير الخط">A-</button>
+                <button id="fontPlus" class="grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white/80 text-sm font-bold shadow-sm transition hover:bg-white dark:border-white/10 dark:bg-white/10" type="button" aria-label="تكبير الخط">A+</button>
+                <button id="themeToggle" class="grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white/80 shadow-sm transition hover:bg-white dark:border-white/10 dark:bg-white/10" type="button" aria-label="الوضع الليلي">
+                    <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 3v2.5M12 18.5V21M21 12h-2.5M5.5 12H3M18.36 5.64l-1.77 1.77M7.41 16.59l-1.77 1.77M18.36 18.36l-1.77-1.77M7.41 7.41 5.64 5.64" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main id="top" class="mx-auto flex max-w-6xl flex-col gap-24 px-5 py-16 md:gap-32 md:px-8 md:py-24">
+        <section class="flex flex-col gap-10">
+            <div class="reading-card flex flex-col gap-8 rounded-[32px] border border-white/70 bg-white/75 p-8 shadow-apple backdrop-blur-xl hover:shadow-apple-hover dark:border-white/10 dark:bg-white/5 dark:shadow-apple-dark dark:hover:shadow-apple-dark-hover md:p-16">
+                <div class="flex flex-wrap items-center gap-3">
+                    <span class="rounded-full border border-quran-border bg-quran-bg px-4 py-2 text-sm font-semibold text-quran-text">سورة كاملة</span>
+                    <span class="rounded-full border border-slate-200 bg-white/70 px-4 py-2 text-sm text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-300">أربع آيات</span>
+                    <span class="rounded-full border border-slate-200 bg-white/70 px-4 py-2 text-sm text-slate-600 dark:border-white/10 dark:bg-white/10 dark:text-slate-300">مكية عند جمهور العلماء</span>
+                </div>
+                <div class="flex flex-col gap-6">
+                    <p class="text-sm font-semibold tracking-wide text-benefit-accent">سورة الإخلاص: التعريف بها وفضلها وتفسير آياتها</p>
+                    <h1 class="max-w-4xl text-5xl font-bold leading-[1.35] text-slate-950 dark:text-white md:text-7xl">تفسير سورة الإخلاص</h1>
+                    <p class="max-w-4xl text-xl leading-[2] text-slate-700 dark:text-slate-300">سورة قصيرة جدًا، عظيمة، جاءت لتقرير إخلاص العبادة لله الأحد الصمد، وبيان العقيدة الصحيحة التي يعيش بها المسلم ولها.</p>
+                </div>
+                <div class="grid gap-4 md:grid-cols-3">
+                    <div class="rounded-[24px] border border-slate-100 bg-tafsir-bg p-6 dark:border-white/10 dark:bg-white/10">
+                        <p class="text-sm font-semibold text-tafsir-accent">موضوع المجلس</p>
+                        <p class="mt-3 leading-8 text-slate-700 dark:text-slate-200">لقاء في تدبر كلام الله عز وجل، وكان الحديث فيه عن سورة الإخلاص.</p>
+                    </div>
+                    <div class="rounded-[24px] border border-slate-100 bg-benefit-bg p-6 dark:border-white/10 dark:bg-white/10">
+                        <p class="text-sm font-semibold text-benefit-accent">مقصد السورة</p>
+                        <p class="mt-3 leading-8 text-slate-700 dark:text-slate-200">تقرير التوحيد وإخلاص العبادة لله تعالى أكمل تقرير.</p>
+                    </div>
+                    <div class="rounded-[24px] border border-slate-100 bg-hadith-bg p-6 dark:border-white/10 dark:bg-white/10">
+                        <p class="text-sm font-semibold text-hadith-accent">افتتاح النص</p>
+                        <p class="mt-3 leading-8 text-slate-700 dark:text-slate-200">بسم الله الرحمن الرحيم، الحمد لله رب العالمين، والصلاة والسلام على نبينا محمد، وعلى آله وأصحابه أجمعين.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="intro" class="flex flex-col gap-10">
+            <div class="flex flex-col gap-3">
+                <p class="text-sm font-semibold text-benefit-accent">المقدمة العامة</p>
+                <h2 class="text-4xl font-bold text-slate-950 dark:text-white md:text-5xl">تعريف السورة وفضلها وسبب نزولها</h2>
+            </div>
+
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="reading-card flex flex-col gap-5 rounded-[32px] border border-white/70 bg-white/80 p-8 shadow-apple hover:shadow-apple-hover dark:border-white/10 dark:bg-white/5 md:p-10">
+                    <h3 class="text-2xl font-bold text-slate-950 dark:text-white">التعريف بالسورة</h3>
+                    <div class="prose-ar flex flex-col gap-4 text-slate-700 dark:text-slate-300">
+                        <p>سورة الإخلاص من السور العظيمة، وهي سورة قصيرة جدًا، إذ تتكون من أربع آيات فقط، وهي سورة مكية، بخلاف سورتي الفلق والناس فهما مدنيتان.</p>
+                        <p>سورة الإخلاص عند جمهور العلماء سورة مكية، أي نزلت في مكة. ومن المعلوم أن السور المكية تعنى أساسًا بترسيخ العقيدة، وبيان التصور الصحيح للخالق والخلق والحياة.</p>
+                        <p>كان المسلمون في أول الإسلام بحاجة إلى تثبيت هذه المعاني العظيمة في نفوسهم، فجاءت هذه السورة مع إيجازها الشديد وبلاغتها الباهرة لتبين العقيدة الصحيحة التي يعيش بها المسلم ولها.</p>
+                    </div>
+                </article>
+
+                <article class="reading-card flex flex-col gap-5 rounded-[32px] border border-white/70 bg-hadith-bg p-8 shadow-apple hover:shadow-apple-hover dark:border-white/10 dark:bg-white/5 md:p-10">
+                    <h3 class="text-2xl font-bold text-hadith-accent dark:text-emerald-200">فضل سورة الإخلاص</h3>
+                    <div class="prose-ar flex flex-col gap-4 text-slate-700 dark:text-slate-300">
+                        <p>فضل هذه السورة عظيم ومشهور. فسورة الإخلاص مع سورتي الفلق والناس تسمى المعوذات، وقد ثبت في الحديث أن النبي صلى الله عليه وسلم قال: «لم يتعوذ الناس بمثلهن».</p>
+                        <p>هذه السور الثلاث تسمى عند بعض أهل العلم القلاقل؛ لأنها تبدأ بكلمة قل.</p>
+                        <p>من فضائل سورة الإخلاص أنها تُقرأ في أذكار ما بعد الصلوات، وتُقرأ في أذكار الصباح والمساء، وتُقرأ عند النوم، وأنها تعدل ثلث القرآن.</p>
+                        <p>روى الإمام البخاري عن النبي صلى الله عليه وسلم أنها تعدل ثلث القرآن. وذكر العلماء أن القرآن الكريم يشتمل على ثلاثة مقاصد عظيمة: التوحيد، والأخبار، والأحكام. ولما كانت سورة الإخلاص قد اشتملت على تقرير التوحيد أكمل تقرير، صارت بمنزلة ثلث القرآن من جهة الأجر والثواب.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="reading-card flex flex-col gap-5 rounded-[32px] border border-white/70 bg-hadith-bg p-8 shadow-apple hover:shadow-apple-hover dark:border-white/10 dark:bg-white/5 md:p-10">
+                    <h3 class="text-2xl font-bold text-hadith-accent dark:text-emerald-200">شاهد في فضلها</h3>
+                    <div class="prose-ar flex flex-col gap-4 text-slate-700 dark:text-slate-300">
+                        <p>من فضائلها كذلك ما رواه البخاري ومسلم أن رسول الله صلى الله عليه وسلم بعث رجلًا على سرية، فكان يقرأ لأصحابه في صلاتهم، ويختم دائمًا بقراءة سورة الإخلاص.</p>
+                        <p>فلما رجعوا ذكروا ذلك للنبي صلى الله عليه وسلم، فقال: «سَلُوهُ لِأَيِّ شَيْءٍ يَصْنَعُ ذَلِكَ؟» فسألوه فقال: «لأنها صفة الرحمن، فأنا أحب أن أقرأ بها». فقال النبي صلى الله عليه وسلم: «أَخْبِرُوهُ أَنَّ اللَّهَ يُحِبُّهُ».</p>
+                    </div>
+                </article>
+
+                <article class="reading-card flex flex-col gap-5 rounded-[32px] border border-white/70 bg-benefit-bg p-8 shadow-apple hover:shadow-apple-hover dark:border-white/10 dark:bg-white/5 md:p-10">
+                    <h3 class="text-2xl font-bold text-benefit-accent">سبب النزول والمقصد العام</h3>
+                    <div class="prose-ar flex flex-col gap-4 text-slate-700 dark:text-slate-300">
+                        <p>جاء في سبب نزولها ما رواه الإمام أحمد والترمذي وغيرهما عن أُبي بن كعب رضي الله عنه: أن المشركين قالوا لرسول الله صلى الله عليه وسلم: «انسب لنا ربك» فأنزل الله تعالى هذه السورة.</p>
+                        <p>المقصد العام كما ورد في النص أن السورة جاءت لتقرير إخلاص العبادة لله سبحانه وتعالى، وبيان حقيقة الخالق وحقيقة الخلق وحقيقة الوجود ومنهج الحياة.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="tafsir" class="flex flex-col gap-16">
+            <div class="flex flex-col gap-3">
+                <p class="text-sm font-semibold text-benefit-accent">التفسير التفصيلي</p>
+                <h2 class="text-4xl font-bold text-slate-950 dark:text-white md:text-5xl">الآيات بحسب ترتيبها</h2>
+            </div>
+
+            <article class="reading-card flex flex-col gap-8 rounded-[32px] border border-quran-border bg-white/85 p-8 shadow-apple hover:shadow-apple-hover dark:border-white/10 dark:bg-white/5 md:p-14">
+                <div class="rounded-[28px] border border-quran-border bg-quran-bg p-8 text-center text-quran-text md:p-12">
+                    <p class="font-quran quran-line text-4xl font-bold md:text-5xl">﴿قُلْ هُوَ اللَّهُ أَحَدٌ﴾</p>
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-2">
+                    <section class="flex flex-col gap-4 rounded-[28px] bg-tafsir-bg p-8 dark:bg-white/10">
+                        <h3 class="text-2xl font-bold text-tafsir-accent dark:text-slate-200">المعنى الإجمالي</h3>
+                        <p class="leading-[2.05] text-slate-700 dark:text-slate-300">تتضمن هذه الآية العظيمة إثبات وحدانية الله تعالى، ونفي تعدد الآلهة. وهي جواب لسؤال المشركين: «انسب لنا ربك»، على القول بأن الضمير يعود إلى الرب المذكور في السؤال، أو افتتاح تعظيم للشأن على القول بأن «هو» ضمير شأن.</p>
+                    </section>
+
+                    <section class="flex flex-col gap-4 rounded-[28px] bg-aqeedah-bg p-8 dark:bg-white/10">
+                        <h3 class="text-2xl font-bold text-aqeedah-accent dark:text-emerald-200">المسائل العقدية</h3>
+                        <p class="leading-[2.05] text-slate-700 dark:text-slate-300">إطلاق وصف الأحدية يدل على أن الله سبحانه أحد في جميع وجوه الكمال: أحد في ربوبيته، فلا خالق ولا رازق ولا مالك سواه، وأحد في ألوهيته، فلا معبود بحق غيره، وأحد في أسمائه وصفاته، فلا مثيل له في شيء من صفات الكمال.</p>
+                    </section>
+                </div>
+
+                <section class="flex flex-col gap-5 rounded-[28px] bg-lang-bg p-8 dark:bg-white/10">
+                    <h3 class="text-2xl font-bold text-lang-accent">شرح الألفاظ ومعاني الكلمات</h3>
+                    <div class="grid gap-5 md:grid-cols-3">
+                        <div class="rounded-[22px] bg-white/70 p-6 dark:bg-white/10">
+                            <p class="font-bold text-slate-950 dark:text-white">﴿قُلْ﴾</p>
+                            <p class="mt-3 leading-8 text-slate-700 dark:text-slate-300">خطاب للنبي صلى الله عليه وسلم أصالةً، ولأمته تبعًا. وفي ذلك دلالة على أن كل عبد مخاطب بالقرآن، ومكلف بما فيه من الأوامر والنواهي والتوجيهات.</p>
+                        </div>
+                        <div class="rounded-[22px] bg-white/70 p-6 dark:bg-white/10">
+                            <p class="font-bold text-slate-950 dark:text-white">﴿هُوَ﴾</p>
+                            <p class="mt-3 leading-8 text-slate-700 dark:text-slate-300">قيل: عائد إلى الرب المذكور في سؤال المشركين. وقيل: ضمير شأن، لا يعود إلى اسم مذكور سابق، بل يدل على أهمية الأمر وعظم شأنه.</p>
+                        </div>
+                        <div class="rounded-[22px] bg-white/70 p-6 dark:bg-white/10">
+                            <p class="font-bold text-slate-950 dark:text-white">﴿أَحَدٌ﴾</p>
+                            <p class="mt-3 leading-8 text-slate-700 dark:text-slate-300">صفة مشبهة على وزن فَعَل، وهو المتفرد الذي لا ثاني له. وهو يختلف عن لفظ الواحد؛ لأن الواحد قد يأتي بعده ثانٍ، أما الأحد فهو المتفرد الذي لا نظير له ولا شريك.</p>
+                        </div>
+                    </div>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">أصل كلمة أحد هو وَحَد بالواو، من: وَحَدَ يَحِدُ، والواحد. ثم قلبت العرب الواو همزة فقالوا: أحد. ولهذه الكلمة استعمالات متعددة، منها استعمالها هنا بمعنى المتفرد المتوحد، وسيأتي لها استعمال آخر في الآية الرابعة.</p>
+                </section>
+
+                <section class="flex flex-col gap-5 rounded-[28px] bg-reflect-bg p-8 text-reflect-text md:p-10">
+                    <div class="flex items-center gap-3">
+                        <span class="h-2 w-10 rounded-full bg-reflect-gold"></span>
+                        <h3 class="text-2xl font-bold text-reflect-gold">النكت البلاغية</h3>
+                    </div>
+                    <p class="leading-[2.1]">من الأساليب العربية الفصيحة ضمير الشأن، ويُستعمل للدلالة على أهمية الأمر وعظم شأنه. ومن أمثلته: «هو القتال جولات»، و«هي الحرب خدعة»، وقول الله تعالى: ﴿إِنَّهَا لَا تَعْمَى الْأَبْصَارُ﴾. وهذا الأسلوب يفيد التعظيم، فكأن المعنى: الشأن العظيم الذي أحدثكم عنه هو أن الله أحد.</p>
+                    <p class="leading-[2.1]">ومن إطلاق الوصف أن الله تعالى قال: ﴿اللَّهُ أَحَدٌ﴾، ولم يقل: الله أحد في قوته، أو أحد في علمه، أو أحد في ملكه؛ بل جاء الوصف مطلقًا، فدل ذلك على الأحدية في جميع وجوه الكمال.</p>
+                </section>
+
+                <section class="flex flex-col gap-4 rounded-[28px] bg-benefit-bg p-8 dark:bg-white/10">
+                    <h3 class="text-2xl font-bold text-benefit-accent">الفوائد الإيمانية والتربوية</h3>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">في هذه الآية راحة عظيمة للمؤمن؛ لأنه يوقن بانفراد الله سبحانه بأفعاله، وباستحقاقه العبادة، وبأسمائه وصفاته. وهذه الطمأنينة لا يدركها إلا من فقدها، كالملاحدة الذين ينكرون وجود الله، ومن يعتقد تعدد الآلهة، ومن أشرك بالله في العبادة.</p>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">من تفرد بالخلق والرزق والملك، وتفرد بالأسماء والصفات، وتفرد باستحقاق العبادة، حكم العقل الصحيح بأنه وحده المستحق للعبادة، وأنه ملجأ جميع الخلائق.</p>
+                </section>
+
+                <section class="flex flex-col gap-4 rounded-[28px] bg-hadith-bg p-8 dark:bg-white/10">
+                    <h3 class="text-2xl font-bold text-hadith-accent dark:text-emerald-200">الشواهد والاستدلالات</h3>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">ورد في بيان ضمير الشأن قول الله تعالى: ﴿إِنَّهَا لَا تَعْمَى الْأَبْصَارُ﴾، ومعناه في النص: إن الشأن والأمر أنها لا تعمى الأبصار.</p>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">ومن الأمثلة العربية: «هو القتال جولات»، و«هي الحرب خدعة»، وقول القائل: «إنه لا بد من حل لذلك».</p>
+                </section>
+
+                <section class="advanced-panel flex flex-col gap-4 rounded-[28px] border border-grammar-accent/20 bg-grammar-bg p-6 dark:bg-white/10">
+                    <p class="text-sm font-bold text-grammar-accent">تفاصيل لغوية متقدمة</p>
+                    <div class="flex flex-col gap-3">
+                        <details class="rounded-[20px] bg-white/70 p-5 dark:bg-white/10">
+                            <summary class="flex cursor-pointer items-center justify-between gap-3 font-semibold text-slate-900 dark:text-white">
+                                <span class="flex items-center gap-2">
+                                    <svg class="h-4 w-4 text-grammar-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5h14M7 9h10M9 13h6M11 17h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                                    الإعراب على القول بأن «هو» يعود إلى الرب المذكور
+                                </span>
+                                <svg class="chevron h-4 w-4 transition" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </summary>
+                            <div class="mt-4 flex flex-col gap-3 leading-8 text-slate-700 dark:text-slate-300">
+                                <p>هو: مبتدأ، بمعنى الرب المسؤول عنه. الله: خبر أول. أحد: خبر ثان. فيكون المعنى: الرب الذي سألتم عنه هو الله، وهو أحد.</p>
+                                <p>في قوله: ﴿اللَّهُ الصَّمَدُ﴾ يكون: الله خبرًا ثالثًا، والصمد نعتًا لله. ثم قوله: ﴿لَمْ يَلِدْ﴾ خبر رابع. وأما ﴿وَلَمْ يُولَدْ﴾ فهو معطوف على قوله: ﴿لَمْ يَلِدْ﴾؛ لأن المقصود المقابلة بين النفيين.</p>
+                                <p>قوله تعالى: ﴿وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ﴾ معطوف على الخبر الأول؛ لأن الأصل في العطف أن يعود إلى الأول، كما في: «جاء محمد وخالد وزيد».</p>
+                            </div>
+                        </details>
+                        <details class="rounded-[20px] bg-white/70 p-5 dark:bg-white/10">
+                            <summary class="flex cursor-pointer items-center justify-between gap-3 font-semibold text-slate-900 dark:text-white">
+                                <span class="flex items-center gap-2">
+                                    <svg class="h-4 w-4 text-grammar-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h10M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                                    الإعراب على القول بأن «هو» ضمير شأن
+                                </span>
+                                <svg class="chevron h-4 w-4 transition" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </summary>
+                            <div class="mt-4 flex flex-col gap-3 leading-8 text-slate-700 dark:text-slate-300">
+                                <p>ضمير الشأن لا يُخبر عنه بمفرد، وإنما لا بد أن يكون خبره جملة. وعليه يكون: هو مبتدأ بمعنى الشأن العظيم.</p>
+                                <p>﴿اللَّهُ أَحَدٌ﴾ جملة اسمية: الله مبتدأ، أحد خبر، والجملة كلها خبر لضمير الشأن. و﴿اللَّهُ الصَّمَدُ﴾ جملة اسمية أخرى وقعت خبرًا ثانيًا لضمير الشأن.</p>
+                                <p>﴿لَمْ يَلِدْ وَلَمْ يُولَدْ﴾ جملة فعلية وقعت خبرًا ثالثًا لضمير الشأن. و﴿وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ﴾ جملة فعلية معطوفة على الخبر الأول.</p>
+                            </div>
+                        </details>
+                        <details class="rounded-[20px] bg-white/70 p-5 dark:bg-white/10">
+                            <summary class="flex cursor-pointer items-center justify-between gap-3 font-semibold text-slate-900 dark:text-white">
+                                <span class="flex items-center gap-2">
+                                    <svg class="h-4 w-4 text-grammar-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16M6 8h12M8 16h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                                    الصرف والاشتقاق
+                                </span>
+                                <svg class="chevron h-4 w-4 transition" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </summary>
+                            <div class="mt-4 flex flex-col gap-3 leading-8 text-slate-700 dark:text-slate-300">
+                                <p>﴿أَحَدٌ﴾ صفة مشبهة على وزن فَعَل، مثل: حسن، وبطل. وأصلها وَحَد بالواو، ثم قلبت العرب الواو همزة فقالوا: أحد.</p>
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+                <section class="flex flex-col gap-3 rounded-[28px] border border-slate-100 bg-white/70 p-8 dark:border-white/10 dark:bg-white/10">
+                    <h3 class="text-xl font-bold text-slate-950 dark:text-white">خلاصة المقطع</h3>
+                    <p class="leading-[2] text-slate-700 dark:text-slate-300">الآية تقرر وحدانية الله المطلقة، وتدل على تفرده في الربوبية والألوهية والأسماء والصفات، وفي هذا طمأنينة المؤمن وإخلاصه لله وحده.</p>
+                </section>
+            </article>
+
+            <article class="reading-card flex flex-col gap-8 rounded-[32px] border border-quran-border bg-white/85 p-8 shadow-apple hover:shadow-apple-hover dark:border-white/10 dark:bg-white/5 md:p-14">
+                <div class="rounded-[28px] border border-quran-border bg-quran-bg p-8 text-center text-quran-text md:p-12">
+                    <p class="font-quran quran-line text-4xl font-bold md:text-5xl">﴿اللَّهُ الصَّمَدُ﴾</p>
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-2">
+                    <section class="flex flex-col gap-4 rounded-[28px] bg-tafsir-bg p-8 dark:bg-white/10">
+                        <h3 class="text-2xl font-bold text-tafsir-accent dark:text-slate-200">المعنى الإجمالي</h3>
+                        <p class="leading-[2.05] text-slate-700 dark:text-slate-300">الصمد صفة على وزن فَعَل. وقد ورد عن السلف في معناها قولان مشهوران: أنه المقصود المصمود إليه، وأنه الذي لا جوف له.</p>
+                    </section>
+                    <section class="flex flex-col gap-4 rounded-[28px] bg-aqeedah-bg p-8 dark:bg-white/10">
+                        <h3 class="text-2xl font-bold text-aqeedah-accent dark:text-emerald-200">المسائل العقدية</h3>
+                        <p class="leading-[2.05] text-slate-700 dark:text-slate-300">في صمدية الله عز وجل دلالة على غناه المطلق؛ فهو سبحانه مستغنٍ عن كل شيء، وكل شيء محتاج إليه، مفتقر إليه، لا غنى له عنه. وكون الله سبحانه هو الصمد المقصود في الحوائج من لوازم وحدانيته.</p>
+                    </section>
+                </div>
+
+                <section class="flex flex-col gap-5 rounded-[28px] bg-lang-bg p-8 dark:bg-white/10">
+                    <h3 class="text-2xl font-bold text-lang-accent">شرح الألفاظ ومعاني الكلمات</h3>
+                    <div class="grid gap-5 md:grid-cols-2">
+                        <div class="rounded-[22px] bg-white/70 p-6 dark:bg-white/10">
+                            <p class="font-bold text-slate-950 dark:text-white">الصمد بمعنى المقصود</p>
+                            <p class="mt-3 leading-8 text-slate-700 dark:text-slate-300">أي بمعنى المصمود إليه. يقال: «صمدت إلى كذا» أي: قصدته. فالله سبحانه هو الذي تقصده الخلائق كلها في حوائجها، وتفزع إليه في مطالبها.</p>
+                        </div>
+                        <div class="rounded-[22px] bg-white/70 p-6 dark:bg-white/10">
+                            <p class="font-bold text-slate-950 dark:text-white">الصمد بمعنى الذي لا جوف له</p>
+                            <p class="mt-3 leading-8 text-slate-700 dark:text-slate-300">هذا القول ثابت عن جماعة من السلف. فالصمد عندهم بمعنى المصمت، فيقال: حديد مصمد، وحديد مصمت، إذا كان متماسكًا ليس فيه فراغ.</p>
+                        </div>
+                    </div>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">معنى ذلك في حق الله سبحانه أنه كامل الغنى، ليس محتاجًا إلى شيء؛ فلا يأكل سبحانه، ولا يشرب، ولا يدخل إليه شيء، ولا يخرج منه شيء.</p>
+                </section>
+
+                <section class="flex flex-col gap-5 rounded-[28px] bg-reflect-bg p-8 text-reflect-text md:p-10">
+                    <div class="flex items-center gap-3">
+                        <span class="h-2 w-10 rounded-full bg-reflect-gold"></span>
+                        <h3 class="text-2xl font-bold text-reflect-gold">النكت البلاغية والروابط</h3>
+                    </div>
+                    <p class="leading-[2.1]">قد يُسأل: لماذا أعادت السورة اسم الله فقالت: ﴿اللَّهُ الصَّمَدُ﴾، ولم تقل: “هو الله الأحد الصمد”؟ والجواب أن الآية الأولى جاءت لتقرير معناها كاملًا في النفس وتعظيمه دون مزجه بغيره، فجاءت جملة مستقلة قائمة بذاتها: ﴿قُلْ هُوَ اللَّهُ أَحَدٌ﴾.</p>
+                    <p class="leading-[2.1]">فلما استقر هذا المعنى في النفوس، جاءت الجملة الثانية مستقلة كذلك: ﴿اللَّهُ الصَّمَدُ﴾، لتكون حقيقة قائمة بذاتها ومعنى مستقلًا كاملًا، وفي ذلك دلالة على عظمة هذه المعاني واستقلالها.</p>
+                    <p class="leading-[2.1]">وهذا من الأساليب العربية المعروفة؛ فالكلام قد يأتي متصلًا، وقد يقصد المتكلم أحيانًا أن يجعل كل جملة مستقلة بنفسها، خاصة إذا أراد التعظيم، مثل قولهم: “زيد صديقنا. زيد أخونا الذي نثق به. زيد لا يمكن أن يفعل ذلك”.</p>
+                </section>
+
+                <section class="flex flex-col gap-4 rounded-[28px] bg-benefit-bg p-8 dark:bg-white/10">
+                    <h3 class="text-2xl font-bold text-benefit-accent">الفوائد الإيمانية والتربوية</h3>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">يترتب على كون الله هو الصمد أن يُخلِص العبد اللجوء إلى الله تعالى في جميع أموره، صغيرها وكبيرها، حتى في إصلاح حذائه إذا انقطع، كما جاء في الأثر.</p>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">لا ينصرف عن هذا الأصل إلا من فسدت فطرته بالكفر أو الشرك، فلجأ إلى بعض المخلوقين الذين لا يملكون نفعًا ولا ضرًا، كالمتعلقين بالقبور والأولياء والأموات. فمن لجأ إليهم مع زعمه الإيمان بوحدانية الله وغناه واستحقاقه وحده للقصد واللجوء، فقد خالف مقتضى هذه الآية الكريمة التي لا ينتفع بها إلا المؤمن المخلص.</p>
+                </section>
+
+                <section class="flex flex-col gap-4 rounded-[28px] bg-hadith-bg p-8 dark:bg-white/10">
+                    <h3 class="text-2xl font-bold text-hadith-accent dark:text-emerald-200">الشواهد والاستدلالات</h3>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">كانت العرب تطلق لفظ الصمد على السيد الكامل في سؤدده الذي يقصده الناس في حاجاتهم. ومن شواهد ذلك قول الراجز:</p>
+                    <blockquote class="rounded-[22px] border-r-4 border-hadith-accent bg-white/70 p-6 font-semibold leading-9 text-slate-800 dark:bg-white/10 dark:text-slate-200">لقد بكر الناعي بخير بني أسد<br>بعمرو بن مسعود وبالسيد الصمد</blockquote>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">وقال الشاعر في معنى المصمت:</p>
+                    <blockquote class="rounded-[22px] border-r-4 border-hadith-accent bg-white/70 p-6 font-semibold leading-9 text-slate-800 dark:bg-white/10 dark:text-slate-200">شهاب حروب لا تزال جياده<br>عوابس يعلكن الشكيم المصمدا</blockquote>
+                </section>
+
+                <section class="advanced-panel flex flex-col gap-4 rounded-[28px] border border-grammar-accent/20 bg-grammar-bg p-6 dark:bg-white/10">
+                    <p class="text-sm font-bold text-grammar-accent">تفاصيل لغوية متقدمة</p>
+                    <details class="rounded-[20px] bg-white/70 p-5 dark:bg-white/10">
+                        <summary class="flex cursor-pointer items-center justify-between gap-3 font-semibold text-slate-900 dark:text-white">
+                            <span class="flex items-center gap-2">
+                                <svg class="h-4 w-4 text-grammar-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v16M6 8h12M8 16h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                                الصرف
+                            </span>
+                            <svg class="chevron h-4 w-4 transition" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </summary>
+                        <p class="mt-4 leading-8 text-slate-700 dark:text-slate-300">الصمد صفة على وزن فَعَل.</p>
+                    </details>
+                </section>
+
+                <section class="flex flex-col gap-3 rounded-[28px] border border-slate-100 bg-white/70 p-8 dark:border-white/10 dark:bg-white/10">
+                    <h3 class="text-xl font-bold text-slate-950 dark:text-white">خلاصة المقطع</h3>
+                    <p class="leading-[2] text-slate-700 dark:text-slate-300">الصمد هو المقصود في الحوائج، الكامل الغنى، الذي تحتاج إليه الخلائق كلها، ومن مقتضى ذلك إخلاص اللجوء إليه وحده.</p>
+                </section>
+            </article>
+
+            <article class="reading-card flex flex-col gap-8 rounded-[32px] border border-quran-border bg-white/85 p-8 shadow-apple hover:shadow-apple-hover dark:border-white/10 dark:bg-white/5 md:p-14">
+                <div class="rounded-[28px] border border-quran-border bg-quran-bg p-8 text-center text-quran-text md:p-12">
+                    <p class="font-quran quran-line text-4xl font-bold md:text-5xl">﴿لَمْ يَلِدْ وَلَمْ يُولَدْ﴾</p>
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-2">
+                    <section class="flex flex-col gap-4 rounded-[28px] bg-tafsir-bg p-8 dark:bg-white/10">
+                        <h3 class="text-2xl font-bold text-tafsir-accent dark:text-slate-200">المعنى الإجمالي</h3>
+                        <p class="leading-[2.05] text-slate-700 dark:text-slate-300">قوله: ﴿لَمْ يَلِدْ﴾ معناه أنه ليس له ولد، أي ليس له فرع يتفرع عنه. وقوله: ﴿وَلَمْ يُولَدْ﴾ معناه أنه ليس له والد، أي ليس له أصل تفرع منه.</p>
+                    </section>
+                    <section class="flex flex-col gap-4 rounded-[28px] bg-aqeedah-bg p-8 dark:bg-white/10">
+                        <h3 class="text-2xl font-bold text-aqeedah-accent dark:text-emerald-200">المسائل العقدية</h3>
+                        <p class="leading-[2.05] text-slate-700 dark:text-slate-300">الله سبحانه ليس بحاجة إلى الولد؛ لأن الولد إنما يخلف أباه الفاني بالموت، أما الله تعالى فهو الآخر الباقي الأبدي الذي لا يفنى ولا يحتاج إلى من يخلفه. وليس بحاجة إلى والد؛ لأنه ليس محدثًا يحتاج إلى أصل نشأ منه، بل هو الأول الأزلي الذي ليس قبله شيء.</p>
+                    </section>
+                </div>
+
+                <section class="flex flex-col gap-5 rounded-[28px] bg-reflect-bg p-8 text-reflect-text md:p-10">
+                    <div class="flex items-center gap-3">
+                        <span class="h-2 w-10 rounded-full bg-reflect-gold"></span>
+                        <h3 class="text-2xl font-bold text-reflect-gold">النكت البلاغية</h3>
+                    </div>
+                    <p class="leading-[2.1]">في هذه الآية تقابل بديع بين نفي الولد ونفي الوالد. ولم تكتفِ الآية بنفي أحد الأمرين دون الآخر؛ لأنه لو نُفي أحدهما فقط لم يكن في ذلك كمال.</p>
+                    <p class="leading-[2.1]">عدم الوالد وحده ليس كمالًا؛ لأن آدم عليه السلام لا والد له. وعدم الولد وحده ليس كمالًا كذلك؛ لأن كثيرًا من الناس لا ولد لهم. أما الكمال الحقيقي ففي انتفائهما جميعًا؛ لأن ذلك يدل على عدم الحاجة إلى أصل أو فرع.</p>
+                </section>
+
+                <section class="flex flex-col gap-4 rounded-[28px] bg-hadith-bg p-8 dark:bg-white/10">
+                    <h3 class="text-2xl font-bold text-hadith-accent dark:text-emerald-200">الشواهد والاستدلالات</h3>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">هذه الآية في معناها العام قريبة من قوله تعالى: ﴿هُوَ الْأَوَّلُ وَالْآخِرُ﴾، فهو الأول الذي ليس قبله شيء، فلا والد له ولا والدة ولا أصل جاء منه، وهو الآخر الذي ليس بعده شيء، فلا ولد له ولا فرع يتفرع عنه.</p>
+                </section>
+
+                <section class="flex flex-col gap-4 rounded-[28px] bg-aqeedah-bg p-8 dark:bg-white/10">
+                    <h3 class="text-2xl font-bold text-aqeedah-accent dark:text-emerald-200">الرد على دعاوى أهل الشرك والكتاب</h3>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">في هذه الآية رد على من زعم أن الملائكة بنات الله، وعلى من زعم أن عيسى أو عزيرًا أبناء لله تعالى.</p>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">ومن أكثر ما يوقع النصارى المعاصرين في الحرج مسألة قولهم إن عيسى ابن الله. ولذلك يلجأ بعضهم إلى التركيز على ما ذكره القرآن الكريم من ولادة عيسى عليه السلام، وأنها كانت بسبب نفخة من ملك بأمر الله في مريم عليها السلام.</p>
+                </section>
+
+                <section class="flex flex-col gap-3 rounded-[28px] border border-slate-100 bg-white/70 p-8 dark:border-white/10 dark:bg-white/10">
+                    <h3 class="text-xl font-bold text-slate-950 dark:text-white">خلاصة المقطع</h3>
+                    <p class="leading-[2] text-slate-700 dark:text-slate-300">الآية تنفي عن الله الأصل والفرع، وتقرر كمال غناه وبقاءه وأزليته، وترد على دعاوى نسبة الولد إليه سبحانه.</p>
+                </section>
+            </article>
+
+            <article class="reading-card flex flex-col gap-8 rounded-[32px] border border-quran-border bg-white/85 p-8 shadow-apple hover:shadow-apple-hover dark:border-white/10 dark:bg-white/5 md:p-14">
+                <div class="rounded-[28px] border border-quran-border bg-quran-bg p-8 text-center text-quran-text md:p-12">
+                    <p class="font-quran quran-line text-4xl font-bold md:text-5xl">﴿وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ﴾</p>
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-2">
+                    <section class="flex flex-col gap-4 rounded-[28px] bg-tafsir-bg p-8 dark:bg-white/10">
+                        <h3 class="text-2xl font-bold text-tafsir-accent dark:text-slate-200">المعنى الإجمالي</h3>
+                        <p class="leading-[2.05] text-slate-700 dark:text-slate-300">الكفء هو المثل والشبيه والنظير المكافئ. ومعنى الآية أن الله تعالى لا نظير له ولا مثيل.</p>
+                    </section>
+                    <section class="flex flex-col gap-4 rounded-[28px] bg-aqeedah-bg p-8 dark:bg-white/10">
+                        <h3 class="text-2xl font-bold text-aqeedah-accent dark:text-emerald-200">المسائل العقدية</h3>
+                        <p class="leading-[2.05] text-slate-700 dark:text-slate-300">هذه الآية الكريمة في معناها قريبة من قوله تعالى: ﴿لَيْسَ كَمِثْلِهِ شَيْءٌ﴾، وقوله سبحانه: ﴿هَلْ تَعْلَمُ لَهُ سَمِيًّا﴾.</p>
+                    </section>
+                </div>
+
+                <section class="flex flex-col gap-5 rounded-[28px] bg-lang-bg p-8 dark:bg-white/10">
+                    <h3 class="text-2xl font-bold text-lang-accent">شرح الألفاظ ومعاني الكلمات</h3>
+                    <div class="grid gap-5 md:grid-cols-2">
+                        <div class="rounded-[22px] bg-white/70 p-6 dark:bg-white/10">
+                            <p class="font-bold text-slate-950 dark:text-white">﴿كُفُوًا﴾</p>
+                            <p class="mt-3 leading-8 text-slate-700 dark:text-slate-300">الكفء هو المثل والشبيه والنظير المكافئ. ولفظ “الكفء” جاءت فيه لغات متعددة عند العرب، وورد بعضها في القراءات القرآنية.</p>
+                        </div>
+                        <div class="rounded-[22px] bg-white/70 p-6 dark:bg-white/10">
+                            <p class="font-bold text-slate-950 dark:text-white">﴿أَحَدٌ﴾ في آخر السورة</p>
+                            <p class="mt-3 leading-8 text-slate-700 dark:text-slate-300">ليست بمعنى ﴿أَحَدٌ﴾ في أول السورة. فـ“أحد” في أول السورة بمعنى المتوحد المنفرد الذي لا شريك له، أما هنا فمعناها: شيء أو موجود أو إنسان.</p>
+                        </div>
+                    </div>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">أي: لم يكن لله شيء من الأشياء، أو موجود من الموجودات، أو إنسان من الناس يكون مكافئًا له أو مماثلًا له. ولهذا يقال: “لا أحد في البيت”، أي لا شخص فيه. وكلمة “أحد” بهذا المعنى من الألفاظ الملازمة للنفي غالبًا، فلا تستعمل إلا في سياقات النفي ونحوها.</p>
+                </section>
+
+                <section class="flex flex-col gap-5 rounded-[28px] bg-reflect-bg p-8 text-reflect-text md:p-10">
+                    <div class="flex items-center gap-3">
+                        <span class="h-2 w-10 rounded-full bg-reflect-gold"></span>
+                        <h3 class="text-2xl font-bold text-reflect-gold">النكت البلاغية</h3>
+                    </div>
+                    <p class="leading-[2.1]">إذا تأملنا التركيب الأصلي للآية وجدنا أن أصلها من جهة الإعراب: “ولم يكن أحدٌ كفؤًا له”. ثم وقع تقديم وتأخير في تركيب الآية.</p>
+                    <p class="leading-[2.1]">أول ما حدث أن الخبر تقدم على الاسم، فصار: “ولم يكن كفؤًا له أحد”. وقد ذكر العلماء أن من أسباب ذلك مراعاة فواصل الآيات حتى تنسجم مع ما قبلها.</p>
+                    <p class="leading-[2.1]">ثم تقدم الجار والمجرور على الخبر أيضًا، فأصبحت الآية: ﴿وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ﴾. ويجيب أهل البلاغة بأن العرب تقدم ما هو أهم وأشد عناية في المعنى، وقد ذكر سيبويه أن العرب تقدم ما يكون موضع العناية والاهتمام.</p>
+                    <p class="leading-[2.1]">لهذا قُدِّم قوله: ﴿لَهُ﴾؛ لأنه مركز المعنى ومصبّه، كما عبّر عن ذلك الزمخشري. فالمقصود الأساسي هو نفي المكافئ عن الله سبحانه وتعالى. ولو قيل: “لم يكن أحد كفؤًا” لم يؤدِّ المعنى المراد، ولو قيل: “ولم يكن كفؤًا أحد” لم يتحقق المقصود نفسه.</p>
+                    <p class="leading-[2.1]">أما حين قيل: ﴿وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ﴾ برز المعنى المقصود، وهو أن الله تعالى لا نظير له ولا مثيل. وهذا من دقائق البلاغة القرآنية في تقديم ما هو أهم في المعنى.</p>
+                </section>
+
+                <section class="flex flex-col gap-4 rounded-[28px] bg-hadith-bg p-8 dark:bg-white/10">
+                    <h3 class="text-2xl font-bold text-hadith-accent dark:text-emerald-200">القراءات واللغات والشواهد</h3>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">من المسائل المتعلقة بقراءتها ما قد يقع فيه بعض القراء عند قوله تعالى: ﴿وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ﴾. فبعضهم يقرأها بوجه آخر، والحقيقة أن في هذه الكلمة قراءات ولغات متعددة للعرب، وقد قرأ بها بعض القراء، إلا أنها تخالف قراءة حفص عن عاصم التي نقرأ بها عادة.</p>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">لذلك فليست خطأً محضًا، وإنما هي انتقال من قراءة إلى قراءة أخرى، والأصل أن يلتزم القارئ قراءة واحدة أثناء التلاوة.</p>
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">يقال: كُفْء، وكُفُؤ، وكُفُو، وكِفاء، وغيرها من اللغات التي تدور كلها حول معنى المماثلة والمكافأة. وقد جاءت في القراءات ألفاظ متعددة من هذا الباب، منها: ﴿كُفُوًا﴾ في قراءتنا المشهورة، ووردت أوجه أخرى في بعض القراءات.</p>
+                </section>
+
+                <section class="advanced-panel flex flex-col gap-4 rounded-[28px] border border-grammar-accent/20 bg-grammar-bg p-6 dark:bg-white/10">
+                    <p class="text-sm font-bold text-grammar-accent">تفاصيل لغوية متقدمة</p>
+                    <div class="flex flex-col gap-3">
+                        <details class="rounded-[20px] bg-white/70 p-5 dark:bg-white/10">
+                            <summary class="flex cursor-pointer items-center justify-between gap-3 font-semibold text-slate-900 dark:text-white">
+                                <span class="flex items-center gap-2">
+                                    <svg class="h-4 w-4 text-grammar-accent" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5h14M7 9h10M9 13h6M11 17h2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                                    الإعراب
+                                </span>
+                                <svg class="chevron h-4 w-4 transition" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </summary>
+                            <div class="mt-4 flex flex-col gap-3 leading-8 text-slate-700 dark:text-slate-300">
+                                <p>أصل الآية من جهة الإعراب: “ولم يكن أحدٌ كفؤًا له”. فـ“أحد” اسم “يكن”، و“كفؤًا” خبرها، و“له” جار ومجرور متعلقان بالخبر.</p>
+                                <p>الأصل اللغوي: “ولم يكن أحدٌ كفؤًا له”، ثم تقدم الخبر على الاسم، فصار: “ولم يكن كفؤًا له أحد”، ثم تقدم الجار والمجرور على الخبر، فأصبحت الآية: ﴿وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ﴾.</p>
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+                <section class="flex flex-col gap-3 rounded-[28px] border border-slate-100 bg-white/70 p-8 dark:border-white/10 dark:bg-white/10">
+                    <h3 class="text-xl font-bold text-slate-950 dark:text-white">خلاصة المقطع</h3>
+                    <p class="leading-[2] text-slate-700 dark:text-slate-300">الآية تنفي عن الله كل مماثل ومكافئ، وجاء ترتيب ألفاظها لإبراز مركز المعنى: نفي المكافئ عن الله سبحانه وتعالى.</p>
+                </section>
+            </article>
+        </section>
+
+        <section id="features" class="flex flex-col gap-10">
+            <div class="flex flex-col gap-3">
+                <p class="text-sm font-semibold text-benefit-accent">بعد اكتمال التفسير</p>
+                <h2 class="text-4xl font-bold text-slate-950 dark:text-white md:text-5xl">الخصائص العامة للسورة</h2>
+            </div>
+
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="reading-card flex flex-col gap-5 rounded-[32px] border border-white/70 bg-reflect-bg p-8 text-reflect-text shadow-apple hover:shadow-apple-hover dark:border-white/10 md:p-10">
+                    <h3 class="text-2xl font-bold text-reflect-gold">الخصائص البلاغية العامة</h3>
+                    <div class="flex flex-col gap-4 leading-[2.05]">
+                        <p>تمتاز السورة كلها بالقصر والإيجاز الشديد، وهذا مناسب للغاية التي نزلت من أجلها، وهي تقرير إخلاص العبادة لله الأحد الصمد.</p>
+                        <p>كأنها خوطب بها جميع الناس: العلماء والجهلاء، الرجال والنساء، الكبار والصغار؛ حتى يستقر هذا المعنى العظيم في نفوس الجميع. ولذلك كانت من أسهل السور حفظًا، ومن أكثرها تلاوة على ألسنة المسلمين.</p>
+                        <p>من مظاهر جمالها اللفظي: اتحاد الفاصلة في آخر الآيات بحرف الدال، ووضوح حرف الدال عند الوقف عليه بسبب القلقلة، والتوازن بين الجمل مثل: ﴿اللَّهُ أَحَدٌ﴾ و﴿اللَّهُ الصَّمَدُ﴾، والتوازن في قوله: ﴿لَمْ يَلِدْ وَلَمْ يُولَدْ﴾، والجناس التام بين لفظ “أحد” في أول السورة ولفظ “أحد” في آخرها.</p>
+                    </div>
+                </article>
+
+                <article class="reading-card flex flex-col gap-5 rounded-[32px] border border-white/70 bg-benefit-bg p-8 shadow-apple hover:shadow-apple-hover dark:border-white/10 dark:bg-white/5 md:p-10">
+                    <h3 class="text-2xl font-bold text-benefit-accent">الخصائص الموضوعية</h3>
+                    <div class="flex flex-col gap-4 leading-[2.05] text-slate-700 dark:text-slate-300">
+                        <p>تبين السورة حقيقة الخالق، وحقيقة الخلق، وحقيقة الوجود، ومنهج الحياة.</p>
+                        <p>الخالق هو الأحد الكامل في صفاته وكمالاته، وهو الأول والآخر، وليس له نظير ولا مثيل. وأما المخلوق فهو محتاج إلى خالقه، مفتقر إليه، صامد إليه في كل شؤونه.</p>
+                        <p>الوجود كله بيد الله تعالى، ولا يكون فيه إلا ما يريد سبحانه ويقدر. وبذلك يكون منهج حياة المسلم واضحًا؛ فهو عبد لخالقه الأحد، مفتقر إليه، لكنه في الوقت نفسه قوي بالله، يلجأ إليه في جميع أموره.</p>
+                    </div>
+                </article>
+            </div>
+
+            <div class="grid gap-6 lg:grid-cols-2">
+                <article class="reading-card flex flex-col gap-5 rounded-[32px] border border-white/70 bg-aqeedah-bg p-8 shadow-apple hover:shadow-apple-hover dark:border-white/10 dark:bg-white/5 md:p-10">
+                    <h3 class="text-2xl font-bold text-aqeedah-accent dark:text-emerald-200">أسماء الله وصفاته الواردة</h3>
+                    <div class="flex flex-col gap-4 leading-[2.05] text-slate-700 dark:text-slate-300">
+                        <p>اشتملت السورة على ثلاثة أسماء عظيمة من أسماء الله تعالى: الله، الأحد، الصمد.</p>
+                        <p>كل هذه الأسماء تدور حول معنى واحد عظيم، وهو إخلاص العبادة لله تعالى؛ فهو المألوه المعبود بحق، وهو الأحد المتفرد بالكمالات، وهو الصمد الذي تصمد إليه جميع الخلائق لكمال غناه.</p>
+                    </div>
+                </article>
+
+                <article class="reading-card flex flex-col gap-5 rounded-[32px] border border-white/70 bg-lang-bg p-8 shadow-apple hover:shadow-apple-hover dark:border-white/10 dark:bg-white/5 md:p-10">
+                    <h3 class="text-2xl font-bold text-lang-accent">أسرار التسمية</h3>
+                    <div class="flex flex-col gap-4 leading-[2.05] text-slate-700 dark:text-slate-300">
+                        <p>لعل كون الأسماء المذكورة في السورة تدور حول إخلاص العبادة لله تعالى هو السر في تسمية السورة بـ”سورة الإخلاص”، مع أن لفظ الإخلاص لم يرد فيها.</p>
+                        <p>سورة الفلق سميت بذلك لورود كلمة الفلق فيها، وسورة الناس سميت بذلك لورود كلمة الناس فيها. أما سورة الإخلاص فلم يرد فيها لفظ الإخلاص ولا مرادفه، ولكنها جاءت كلها لتقرير إخلاص العبادة لله سبحانه وتعالى.</p>
+                        <p>وقد سميت أيضًا بأسماء أخرى، ومن أشهرها: سورة الصمد.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="summary" class="flex flex-col gap-10">
+            <div class="reading-card flex flex-col gap-8 rounded-[32px] border border-white/70 bg-white/80 p-8 shadow-apple hover:shadow-apple-hover dark:border-white/10 dark:bg-white/5 md:p-16">
+                <div class="flex flex-col gap-3">
+                    <p class="text-sm font-semibold text-benefit-accent">الخلاصة النهائية</p>
+                    <h2 class="text-4xl font-bold text-slate-950 dark:text-white md:text-5xl">ما يخرج به القارئ</h2>
+                </div>
+                <div class="grid gap-6 lg:grid-cols-2">
+                    <div class="rounded-[28px] bg-benefit-bg p-8 dark:bg-white/10">
+                        <h3 class="text-2xl font-bold text-benefit-accent">المقصد وأبرز المعاني</h3>
+                        <p class="mt-4 leading-[2.05] text-slate-700 dark:text-slate-300">السورة جاءت لتقرير إخلاص العبادة لله سبحانه وتعالى، وبيان أن الله هو الأحد الكامل في صفاته وكمالاته، الصمد الذي تقصده الخلائق كلها، الأول والآخر، الذي لا والد له ولا ولد، ولا نظير له ولا مثيل.</p>
+                    </div>
+                    <div class="rounded-[28px] bg-aqeedah-bg p-8 dark:bg-white/10">
+                        <h3 class="text-2xl font-bold text-aqeedah-accent dark:text-emerald-200">أبرز الفوائد</h3>
+                        <p class="mt-4 leading-[2.05] text-slate-700 dark:text-slate-300">معرفة هذه الحقائق والإيمان بها واليقين بها تجعل المسلم قوي الإيمان بالله، شديد التعلق به، لا تعوقه رغبة ولا رهبة عن التوجه إلى الله، ولا يبتغي بعمله إلا وجه الله سبحانه وتعالى.</p>
+                    </div>
+                </div>
+                <div class="rounded-[28px] bg-reflect-bg p-8 text-reflect-text">
+                    <h3 class="text-2xl font-bold text-reflect-gold">أهم ما في البناء العلمي والبلاغي</h3>
+                    <p class="mt-4 leading-[2.1]">تجمع السورة بين إيجاز شديد وبلاغة باهرة، واتحاد الفواصل، والتوازن بين الجمل، والتقابل في النفي، والجناس بين لفظ “أحد” في أول السورة وآخرها، مع ترتيب المعاني من إثبات الأحدية والصمدية إلى نفي الأصل والفرع والمماثل.</p>
+                </div>
+                <div class="rounded-[28px] border border-slate-100 bg-white/70 p-8 dark:border-white/10 dark:bg-white/10">
+                    <p class="leading-[2.05] text-slate-700 dark:text-slate-300">هذا ما تيسر في تأمل هذه السورة الكريمة، والله أعلم. وصلى الله وسلم على نبينا محمد. والسلام عليكم ورحمة الله وبركاته.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const root = document.documentElement;
+        const themeToggle = document.getElementById('themeToggle');
+        const fontPlus = document.getElementById('fontPlus');
+        const fontMinus = document.getElementById('fontMinus');
+        const toggleDetails = document.getElementById('toggleDetails');
+        const savedTheme = localStorage.getItem('ikhlas-theme');
+        const savedFont = Number(localStorage.getItem('ikhlas-font') || 18);
+        const savedDetails = localStorage.getItem('ikhlas-details');
+
+        function applyFont(size) {
+            const clamped = Math.min(22, Math.max(16, size));
+            document.body.style.setProperty('--reader-size', clamped + 'px');
+            localStorage.setItem('ikhlas-font', String(clamped));
+        }
+
+        function setDetails(open) {
+            document.querySelectorAll('.advanced-panel details')?.forEach((detail) => {
+                detail.open = open;
+            });
+            localStorage.setItem('ikhlas-details', open ? 'open' : 'closed');
+        }
+
+        if (savedTheme === 'dark') {
+            root.classList.add('dark');
+        }
+        applyFont(savedFont);
+        if (savedDetails === 'open') {
+            setDetails(true);
+        }
+
+        themeToggle?.addEventListener('click', () => {
+            root.classList.toggle('dark');
+            localStorage.setItem('ikhlas-theme', root.classList.contains('dark') ? 'dark' : 'light');
+        });
+
+        fontPlus?.addEventListener('click', () => {
+            const current = Number(localStorage.getItem('ikhlas-font') || 18);
+            applyFont(current + 1);
+        });
+
+        fontMinus?.addEventListener('click', () => {
+            const current = Number(localStorage.getItem('ikhlas-font') || 18);
+            applyFont(current - 1);
+        });
+
+        toggleDetails?.addEventListener('click', () => {
+            const details = Array.from(document.querySelectorAll('.advanced-panel details'));
+            const shouldOpen = details.some((detail) => !detail.open);
+            setDetails(shouldOpen);
+        });
+    </script>
+</body>
+</html>
